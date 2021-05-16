@@ -1,15 +1,21 @@
-package org.perivoliotis.omilia.tel.numbers;
+package org.perivoliotis.omilia.tel.numbers.services;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class NaturalNumberMerger {
+class NaturalNumberMerger {
 
-    public Set<List<String>> merge(String[] array) {
+    Set<List<String>> merge(String[] array) {
+        Set<List<String>> result3D = new HashSet<>();
+        Set<List<String>> result2D = new HashSet<>();
 
-        return null;
+        generateThreeDigitMerges(array, result3D);
+
+        result3D.forEach(r -> generateTwoDigitMerges(r.toArray(new String[0]), result2D));
+        return result2D;
     }
 
     void generateTwoDigitMerges(String[] array, Set<List<String>> generatedSet) {
@@ -31,7 +37,7 @@ public class NaturalNumberMerger {
 
         for (int i = 0; i < array.length -1; i++) {
             if (array[i].length() == 3 && array[i+1].length() <= 2 && Integer.parseInt(array[i]) >= 100
-                    && Integer.parseInt(array[i]) % 100 == 0) {
+                    && Integer.parseInt(array[i]) % 10 == 0) {
                 String[] merged = createMergeArray(array, i);
                 generateThreeDigitMerges(merged, generatedSet);
             }

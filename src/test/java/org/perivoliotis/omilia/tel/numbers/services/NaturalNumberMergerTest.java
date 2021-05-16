@@ -1,6 +1,7 @@
-package org.perivoliotis.omilia.tel.numbers;
+package org.perivoliotis.omilia.tel.numbers.services;
 
 import org.junit.jupiter.api.Test;
+import org.perivoliotis.omilia.tel.numbers.services.NaturalNumberMerger;
 
 import java.util.HashSet;
 import java.util.List;
@@ -108,6 +109,15 @@ class NaturalNumberMergerTest {
         String[] array = new String[]{"2", "600", "76", "100", "1"};
         Set<List<String>> result = new HashSet<>();
         naturalNumberMerger.generateThreeDigitMerges(array, result);
+
+        assertEquals(4, result.size());
+    }
+
+    @Test
+    void shouldCreateAllTwoAndThreeDigitsMerges() {
+
+        String[] array = new String[]{"21", "600", "70", "1"};
+        Set<List<String>> result = naturalNumberMerger.merge(array);
 
         assertEquals(4, result.size());
     }

@@ -1,4 +1,4 @@
-package org.perivoliotis.omilia.tel.numbers;
+package org.perivoliotis.omilia.tel.numbers.services;
 
 import org.apache.commons.lang3.StringUtils;
 

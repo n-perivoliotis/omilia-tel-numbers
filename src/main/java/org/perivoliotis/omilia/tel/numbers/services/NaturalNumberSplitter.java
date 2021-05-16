@@ -1,4 +1,4 @@
-package org.perivoliotis.omilia.tel.numbers;
+package org.perivoliotis.omilia.tel.numbers.services;
 
 import java.util.HashSet;
 import java.util.List;
@@ -6,9 +6,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class NaturalNumberSplitter {
+class NaturalNumberSplitter {
 
-    public Set<List<String>> split(String[] array) {
+    Set<List<String>> split(String[] array) {
         Set<List<String>> result3D = new HashSet<>();
         Set<List<String>> result2D = new HashSet<>();
 

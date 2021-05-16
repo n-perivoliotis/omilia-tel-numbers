@@ -1,6 +1,7 @@
-package org.perivoliotis.omilia.tel.numbers;
+package org.perivoliotis.omilia.tel.numbers.services;
 
 import org.junit.jupiter.api.Test;
+import org.perivoliotis.omilia.tel.numbers.services.NaturalNumberSplitter;
 
 import java.util.HashSet;
 import java.util.List;

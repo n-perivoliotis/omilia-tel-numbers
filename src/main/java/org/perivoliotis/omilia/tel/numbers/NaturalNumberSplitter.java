@@ -1,5 +1,6 @@
 package org.perivoliotis.omilia.tel.numbers;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -7,7 +8,17 @@ import java.util.stream.Stream;
 
 public class NaturalNumberSplitter {
 
-    public void generateTwoDigitSplits(String[] array, Set<List<String>> generatedSet) {
+    public Set<List<String>> split(String[] array) {
+        Set<List<String>> result3D = new HashSet<>();
+        Set<List<String>> result2D = new HashSet<>();
+
+        generateThreeDigitSplits(array, result3D);
+
+        result3D.forEach(r -> generateTwoDigitSplits(r.toArray(new String[0]), result2D));
+        return result2D;
+    }
+
+    void generateTwoDigitSplits(String[] array, Set<List<String>> generatedSet) {
 
         generatedSet.add(Stream.of(array).collect(Collectors.toList()));
 
@@ -19,7 +30,7 @@ public class NaturalNumberSplitter {
         }
     }
 
-    public void generateThreeDigitSplits(String[] array, Set<List<String>> generatedSet) {
+    void generateThreeDigitSplits(String[] array, Set<List<String>> generatedSet) {
 
         generatedSet.add(Stream.of(array).collect(Collectors.toList()));
 
@@ -41,7 +52,7 @@ public class NaturalNumberSplitter {
         splitArray[position+1] = String.valueOf(Integer.parseInt(original[position]) % (int) Math.pow(10, powerOfTen));
 
         if (original.length + 1 - (position + 2) >= 0)
-            System.arraycopy(original, position + 2 - 1, splitArray, position + 2, original.length + 1 - (position + 2));
+            System.arraycopy(original, position + 1, splitArray, position + 2, original.length + 1 - (position + 2));
 
         return splitArray;
     }

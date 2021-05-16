@@ -107,4 +107,13 @@ class NaturalNumberSplitterTest {
 
         assertEquals(4, result.size());
     }
+
+    @Test
+    void shouldCreateAllTwoAndThreeDigitsSplits() {
+
+        String[] array = new String[]{"21", "60", "769"};
+        Set<List<String>> result = naturalNumberSplitter.split(array);
+
+        assertEquals(6, result.size());
+    }
 }
